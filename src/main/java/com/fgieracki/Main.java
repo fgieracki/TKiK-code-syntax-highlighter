@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.NoSuchFileException;
 
 public class Main {
 
@@ -20,7 +18,6 @@ public class Main {
         Scanner scanner = new Scanner(tokenDB);
 
         readInputFile(inputFile, scanner);
-        scanner.printTokens();
         writeOutputFile(outputFile, scanner);
     }
 
@@ -28,7 +25,7 @@ public class Main {
         try(java.util.Scanner fileScanner = new java.util.Scanner(inputFile)){
             while(fileScanner.hasNextLine()){
                 String line = fileScanner.nextLine();
-                for(char c : line.toCharArray()){
+                for(char c : line.toCharArray()) {
                     scanner.nextChar(c);
                 }
                 scanner.nextChar('\n');

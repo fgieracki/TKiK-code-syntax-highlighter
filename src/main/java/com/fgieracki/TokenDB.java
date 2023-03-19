@@ -31,5 +31,9 @@ public class TokenDB {
         addToken(new Token(Pattern.compile("\\s+"), "WHITE_SPACE", ""));
         //brackets
         addToken(new Token(Pattern.compile("[\\(\\)\\{\\}]"), "BRACKET", "color: red"));
+        //#include keyword
+        addToken(new Token(Pattern.compile("#include"), "#INCLUDE", "color: orange"));
+        //return keyword
+        addToken(new Token(Pattern.compile("return"), "RETURN", "color: MediumVioletRed"));
     }
 }

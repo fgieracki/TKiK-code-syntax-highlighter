@@ -32,7 +32,9 @@ public class TokenDTO {
     }
 
     public String toHTML(){
-        if(!Pattern.compile("\\r|\\r\\n|\\n").matcher(value).matches())
+        if(Pattern.compile(" ").matcher(value).matches())
+            return "<span style=\"" + style + "\">&nbsp</span>";
+        else if(!Pattern.compile("\\r|\\r\\n|\\n").matcher(value).matches())
             return "<span style=\"" + style + "\">" + escapeHtml4(value) + "</span>";
         else
             return "<br>";
