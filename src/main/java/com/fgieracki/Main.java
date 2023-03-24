@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class Main {
 
@@ -37,7 +38,7 @@ public class Main {
 
     private static void writeOutputFile(File outputFile, Scanner scanner) throws IOException {
         if(outputFile.exists()){
-            outputFile.delete();
+            Files.delete(outputFile.toPath());
         }
         outputFile.createNewFile();
         try(FileWriter fileWriter = new FileWriter(outputFile)){

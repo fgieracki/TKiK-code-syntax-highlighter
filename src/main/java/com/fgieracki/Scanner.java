@@ -15,6 +15,9 @@ public class Scanner {
     private TokenDB tokenDB = new TokenDB();
     private List<TokenDTO> result = new ArrayList<>();
 
+    private boolean isCommentLine = false;
+    private boolean isCommentBlock = false;
+
     public Scanner(TokenDB tokenDB) {
         this.tokenDB = tokenDB;
     }
@@ -30,7 +33,7 @@ public class Scanner {
         }
         else {
             if(getMatchingTokenDTO(String.valueOf(character)) != null){
-                addResultToken(makeEmptyTokenDTO(current_string));
+                if(!current_string.isEmpty()) addResultToken(makeEmptyTokenDTO(current_string));
                 addResultToken(getMatchingTokenDTO(String.valueOf(character)));
                 current_string = "";
             }

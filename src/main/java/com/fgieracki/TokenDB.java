@@ -33,7 +33,10 @@ public class TokenDB {
         addToken(new Token(Pattern.compile("[\\(\\)\\{\\}]"), "BRACKET", "color: red"));
         //#include keyword
         addToken(new Token(Pattern.compile("#include"), "#INCLUDE", "color: orange"));
-        //return keyword
-        addToken(new Token(Pattern.compile("return"), "RETURN", "color: MediumVioletRed"));
+        //semicolon
+        addToken(new Token(Pattern.compile(";"), "SEMICOLON", "color: NavyBlue; font-weight: bold;"));
+        //single line comment
+        addToken(new Token(Pattern.compile("//"), "COMMENT_LINE", "color: grey; font-style: italic;"));
+
     }
 }
