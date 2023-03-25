@@ -27,8 +27,10 @@ public class TokenDB {
         addToken(new Token(Pattern.compile("(if|else)"), "IF", "color: orange"));
         //type keywords
         addToken(new Token(Pattern.compile("(int|double|float|char|boolean|string)"), "TYPE", "color: green"));
-        //white space
-        addToken(new Token(Pattern.compile("\\s+"), "WHITE_SPACE", ""));
+        //new line
+        addToken(new Token(Pattern.compile("\\r|\\r\\n|\\n"), "NEW_LINE", ""));
+        //white space other than new line
+        addToken(new Token(Pattern.compile("\\s"), "WHITE_SPACE", ""));
         //brackets
         addToken(new Token(Pattern.compile("[\\(\\)\\{\\}]"), "BRACKET", "color: red"));
         //#include keyword
@@ -37,6 +39,10 @@ public class TokenDB {
         addToken(new Token(Pattern.compile(";"), "SEMICOLON", "color: NavyBlue; font-weight: bold;"));
         //single line comment
         addToken(new Token(Pattern.compile("//"), "COMMENT_LINE", "color: grey; font-style: italic;"));
+        //multi line comment
+        addToken(new Token(Pattern.compile("/\\*"), "COMMENT_BLOCK_START", "color: grey; font-style: italic;"));
+
+        addToken(new Token(Pattern.compile("\\*/"), "COMMENT_BLOCK_END", "color: grey; font-style: italic;"));
 
     }
 }
