@@ -40,7 +40,7 @@ public class Scanner {
             }
             TokenDTO whitespaceToken = getMatchingTokenDTO(String.valueOf(character));
             manageComments(whitespaceToken);
-            addResultToken(whitespaceToken);
+            addResultToken(changeStyleIfComment(whitespaceToken));
         }
         else {
             current_string += character;
@@ -76,8 +76,12 @@ public class Scanner {
             case "COMMENT_BLOCK_START" -> {
                 if (!isCommentLine) isCommentBlock = true;
             }
-            case "COMMENT_BLOCK_END" -> isCommentBlock = false;
-            case "NEW_LINE" -> isCommentLine = false;
+            case "COMMENT_BLOCK_END" -> {
+                isCommentBlock = false;
+                isCommentLine = false;
+            }
+            case "NEW_LINE" ->
+                isCommentLine = false;
             default -> {}
         }
     }

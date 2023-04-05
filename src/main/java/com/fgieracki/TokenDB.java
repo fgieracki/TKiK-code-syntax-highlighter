@@ -21,28 +21,20 @@ public class TokenDB {
     }
 
     public TokenDB(){
-        //loop keywords
         addToken(new Token(Pattern.compile("(for|while|do)"), "LOOP", "color: blue"));
-        //if keyword
         addToken(new Token(Pattern.compile("(if|else)"), "IF", "color: orange"));
-        //type keywords
-        addToken(new Token(Pattern.compile("(int|double|float|char|boolean|string)"), "TYPE", "color: green"));
-        //new line
+        addToken(new Token(Pattern.compile("(int|double|float|char|bool|string)"), "TYPE", "color: green"));
         addToken(new Token(Pattern.compile("\\r|\\r\\n|\\n"), "NEW_LINE", ""));
-        //white space other than new line
-        addToken(new Token(Pattern.compile("\\s"), "WHITE_SPACE", ""));
-        //brackets
+        addToken(new Token(Pattern.compile("/[^\\S\\r\\n]/"), "WHITE_SPACE", ""));
         addToken(new Token(Pattern.compile("[\\(\\)\\{\\}]"), "BRACKET", "color: red"));
-        //#include keyword
         addToken(new Token(Pattern.compile("#include"), "#INCLUDE", "color: orange"));
-        //semicolon
-        addToken(new Token(Pattern.compile(";"), "SEMICOLON", "color: NavyBlue; font-weight: bold;"));
-        //single line comment
+        addToken(new Token(Pattern.compile(";"), "SEMICOLON", "color: DarkMagenta; font-weight: bold;"));
         addToken(new Token(Pattern.compile("//"), "COMMENT_LINE", "color: grey; font-style: italic;"));
-        //multi line comment
         addToken(new Token(Pattern.compile("/\\*"), "COMMENT_BLOCK_START", "color: grey; font-style: italic;"));
-
         addToken(new Token(Pattern.compile("\\*/"), "COMMENT_BLOCK_END", "color: grey; font-style: italic;"));
+        addToken(new Token(Pattern.compile("return"), "RETURN", "color: purple"));
+        addToken(new Token(Pattern.compile("using"), "USING", "color: lime; font-style: bold;"));
+
 
     }
 }
